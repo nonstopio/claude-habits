@@ -119,17 +119,17 @@ document.getElementById("home").addEventListener("click", (e) => {
   deck.scrollTo({ top: 0, behavior: "smooth" });
 });
 
-// first-visit credit toast — shows once, then hides away for good
-if (!localStorage.getItem("creditShown")) {
-  const credit = document.getElementById("credit");
-  credit.hidden = false;
-  setTimeout(() => credit.classList.add("show"), 800);
-  setTimeout(() => {
-    credit.classList.remove("show");
-    setTimeout(() => (credit.hidden = true), 400);
-  }, 6800);
-  localStorage.setItem("creditShown", "1");
-}
+// builder credit — appears on load, hides on the first user activity
+const credit = document.getElementById("credit");
+credit.hidden = false;
+setTimeout(() => credit.classList.add("show"), 300);
+const hideCredit = (e) => {
+  if (credit.hidden || (e.target instanceof Node && credit.contains(e.target))) return; // clicking the credit itself doesn't dismiss it
+  credit.classList.remove("show");
+  setTimeout(() => (credit.hidden = true), 400);
+};
+for (const ev of ["wheel", "touchmove", "pointerdown", "keydown"])
+  window.addEventListener(ev, hideCredit, { passive: true, capture: true });
 
 renderChips();
 render();
