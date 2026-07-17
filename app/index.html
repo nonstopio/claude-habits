@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Claude Habits — a playbook you can start tomorrow</title>
+    <meta
+      name="description"
+      content="100 habits for working with Claude Code — models, planning, CLAUDE.md, skills, hooks, agents, context, MCP, git, and guardrails. Scroll the deck, adopt the habits."
+    />
+    <meta name="theme-color" content="#14110d" />
+    <meta property="og:title" content="Claude Habits" />
+    <meta
+      property="og:description"
+      content="A playbook you can start tomorrow. 100 habits, 10 packs."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2314110d'/%3E%3Ctext x='50' y='68' font-size='52' text-anchor='middle' fill='%23e8825a' font-family='monospace'%3E✳%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="topbar">
+        <a class="brand" href="#" id="home">
+          <span class="mark">✳</span> claude<b>habits</b>
+        </a>
+        <div class="counts">
+          <span class="pos" id="pos">000<i>/100</i></span>
+          <span class="adopted" id="adoptedCount" title="habits you've adopted"
+            >0 adopted</span
+          >
+        </div>
+      </div>
+      <nav class="chips" id="chips" aria-label="Filter by pack"></nav>
+      <div class="bar"><i id="bar"></i></div>
+    </header>
+
+    <main
+      id="deck"
+      tabindex="0"
+      aria-label="Habit cards — scroll or use arrow keys"
+    ></main>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

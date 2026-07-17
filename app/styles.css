@@ -1,0 +1,314 @@
+/* Claude Habits — terminal at dusk. Tokens first, everything derives from them. */
+:root {
+  --bg: #14110d;
+  --surface: #1d1913;
+  --line: #2d271e;
+  --ink: #f0e9de;
+  --muted: #a3957f;
+  --coral: #e8825a;
+  --display: "Bricolage Grotesque", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--display);
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── header ─────────────────────────────────────────── */
+header {
+  flex: none;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+}
+
+.topbar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 1.1rem 0.4rem;
+  max-width: 720px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.brand {
+  font-family: var(--mono);
+  font-size: 0.95rem;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+.brand b {
+  color: var(--ink);
+  font-weight: 700;
+}
+.brand .mark {
+  color: var(--coral);
+  margin-right: 0.15rem;
+}
+
+.counts {
+  display: flex;
+  align-items: baseline;
+  gap: 0.9rem;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+}
+.pos {
+  color: var(--ink);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.pos i {
+  font-style: normal;
+  color: var(--muted);
+  font-weight: 400;
+}
+.adopted {
+  color: var(--coral);
+}
+
+.chips {
+  display: flex;
+  gap: 0.4rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 0.45rem 1.1rem 0.7rem;
+  max-width: 720px;
+  margin: 0 auto;
+  width: 100%;
+}
+.chips::-webkit-scrollbar {
+  display: none;
+}
+@media (min-width: 760px) {
+  .chips {
+    flex-wrap: wrap;
+  }
+}
+
+.chip {
+  flex: none;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+}
+.chip[aria-pressed="true"] {
+  border-color: var(--c, var(--ink));
+  color: var(--c, var(--ink));
+  background: color-mix(in srgb, var(--c, var(--ink)) 12%, transparent);
+}
+
+.bar {
+  height: 2px;
+  background: var(--line);
+}
+.bar i {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--coral);
+  transition: width 0.15s linear;
+}
+
+/* ── deck ───────────────────────────────────────────── */
+#deck {
+  flex: 1;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  outline: none;
+}
+
+.slide {
+  height: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: grid;
+  place-items: center;
+  padding: 1.1rem;
+}
+
+.card {
+  position: relative;
+  width: min(100%, 600px);
+  max-height: 100%;
+  overflow-y: auto;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-top: 2px solid var(--c);
+  border-radius: 18px;
+  padding: 1.6rem 1.5rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+/* ghosted index number — the deck's signature */
+.card .num {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.9rem;
+  font-family: var(--mono);
+  font-size: clamp(4rem, 18vw, 6.5rem);
+  font-weight: 700;
+  line-height: 1;
+  color: color-mix(in srgb, var(--c) 14%, transparent);
+  pointer-events: none;
+  user-select: none;
+}
+
+.pill {
+  align-self: flex-start;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c);
+  border: 1px solid color-mix(in srgb, var(--c) 45%, transparent);
+  border-radius: 999px;
+  padding: 0.25rem 0.65rem;
+}
+
+.card h2 {
+  font-size: clamp(1.5rem, 5.4vw, 2.1rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  max-width: 88%;
+}
+
+.card p {
+  font-size: 1.02rem;
+  font-weight: 350;
+  line-height: 1.55;
+  color: color-mix(in srgb, var(--ink) 82%, var(--muted));
+}
+
+.try {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: var(--ink);
+  background: var(--bg);
+  border-left: 2px solid var(--c);
+  border-radius: 0 8px 8px 0;
+  padding: 0.6rem 0.8rem;
+  overflow-x: auto;
+  white-space: pre;
+}
+.try::before {
+  content: "› ";
+  color: var(--c);
+}
+
+.adopt {
+  align-self: flex-start;
+  margin-top: 0.2rem;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  padding: 0.5rem 0.95rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.adopt:hover {
+  border-color: var(--muted);
+  color: var(--ink);
+}
+.card.is-adopted .adopt {
+  border-color: var(--c);
+  background: var(--c);
+  color: var(--bg);
+  font-weight: 700;
+}
+
+/* ── cover & closing slides ─────────────────────────── */
+.cover .card {
+  border-top-color: var(--coral);
+  background: none;
+  border: none;
+  text-align: center;
+  align-items: center;
+  gap: 1.1rem;
+}
+.cover .mark {
+  font-size: 2rem;
+  color: var(--coral);
+}
+.cover h1 {
+  font-size: clamp(2.6rem, 9vw, 4.2rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+.cover h1 em {
+  font-style: normal;
+  color: var(--coral);
+}
+.cover .sub {
+  font-size: 1.05rem;
+  color: var(--muted);
+  max-width: 32ch;
+  line-height: 1.5;
+}
+.cover .meta {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+}
+.cover .hint {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--coral);
+  animation: bob 1.6s ease-in-out infinite;
+}
+@keyframes bob {
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+.empty {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.85rem;
+}
+
+:focus-visible {
+  outline: 2px solid var(--coral);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cover .hint {
+    animation: none;
+  }
+  #deck {
+    scroll-behavior: auto !important;
+  }
+}
