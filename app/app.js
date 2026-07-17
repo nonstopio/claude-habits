@@ -54,7 +54,7 @@ function render() {
              <span class="mark">✳</span>
              <h1>Claude <em>Habits</em></h1>
              <p class="sub">A playbook you can start tomorrow. Scroll the deck. Steal what works. Tap the ones you already live by.</p>
-             <span class="meta">100 HABITS · 10 PACKS · 1 REPO</span>
+             <span class="meta">100 HABITS · 10 PACKS · <a href="https://github.com/nonstopio/claude-habits" target="_blank" rel="noopener">1 REPO ↗</a></span>
              <span class="hint">↓ scroll</span>
            </div>
          </section>`

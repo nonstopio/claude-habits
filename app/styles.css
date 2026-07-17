@@ -84,6 +84,14 @@ header {
 .adopted {
   color: var(--coral);
 }
+.gh {
+  color: var(--muted);
+  display: inline-flex;
+  align-self: center;
+}
+.gh:hover {
+  color: var(--ink);
+}
 
 .chips {
   display: flex;
@@ -280,6 +288,13 @@ header {
   font-size: 0.75rem;
   color: var(--muted);
   letter-spacing: 0.06em;
+}
+.cover .meta a {
+  color: var(--coral);
+  text-decoration: none;
+}
+.cover .meta a:hover {
+  text-decoration: underline;
 }
 .cover .hint {
   font-family: var(--mono);
