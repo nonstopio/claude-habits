@@ -92,6 +92,9 @@ chips.addEventListener("click", (e) => {
   render();
 });
 
+const scrollBehavior = () =>
+  matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+
 deck.addEventListener("click", (e) => {
   const btn = e.target.closest(".adopt");
   if (!btn) return;
@@ -102,6 +105,13 @@ deck.addEventListener("click", (e) => {
   card.classList.toggle("is-adopted", adopted.has(id));
   btn.textContent = adopted.has(id) ? "✓ my habit" : "I do this";
   updateAdopted();
+  // adopting advances to the next card — after the button animation lands
+  if (adopted.has(id))
+    setTimeout(
+      () =>
+        deck.scrollBy({ top: deck.clientHeight, behavior: scrollBehavior() }),
+      450,
+    );
 });
 
 deck.addEventListener("scroll", updatePos, { passive: true });
@@ -111,12 +121,12 @@ document.addEventListener("keydown", (e) => {
   const step = { ArrowDown: 1, j: 1, ArrowUp: -1, k: -1 }[e.key];
   if (!step) return;
   e.preventDefault();
-  deck.scrollBy({ top: step * deck.clientHeight, behavior: "smooth" });
+  deck.scrollBy({ top: step * deck.clientHeight, behavior: scrollBehavior() });
 });
 
 document.getElementById("home").addEventListener("click", (e) => {
   e.preventDefault();
-  deck.scrollTo({ top: 0, behavior: "smooth" });
+  deck.scrollTo({ top: 0, behavior: scrollBehavior() });
 });
 
 // builder credit — appears on load, hides on the first user activity
@@ -124,7 +134,8 @@ const credit = document.getElementById("credit");
 credit.hidden = false;
 setTimeout(() => credit.classList.add("show"), 300);
 const hideCredit = (e) => {
-  if (credit.hidden || (e.target instanceof Node && credit.contains(e.target))) return; // clicking the credit itself doesn't dismiss it
+  if (credit.hidden || (e.target instanceof Node && credit.contains(e.target)))
+    return; // clicking the credit itself doesn't dismiss it
   credit.classList.remove("show");
   setTimeout(() => (credit.hidden = true), 400);
 };

@@ -231,7 +231,7 @@ header {
 }
 
 .adopt {
-  align-self: flex-start;
+  align-self: flex-end;
   margin-top: 0.2rem;
   font-family: var(--mono);
   font-size: 0.78rem;
@@ -319,6 +319,7 @@ header {
   position: fixed;
   bottom: 1.2rem;
   left: 50%;
+  white-space: nowrap;
   translate: -50% 0;
   font-family: var(--mono);
   font-size: 0.78rem;
