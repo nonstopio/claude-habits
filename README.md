@@ -2,7 +2,7 @@
 
 **A playbook you can start tomorrow.** 100 habits for working with Claude Code, served as a scrollable card deck — and a repo that _practices_ every habit it preaches. Steal the whole setup.
 
-Companion repo for the "Claude Habits" session by [Ajay Kumar](https://nonstopio.com) · NonStop io.
+Companion repo for the "Claude Habits" session by [Ajay Kumar](https://github.com/ProjectAJ14) · NonStop io.
 
 ## The app
 

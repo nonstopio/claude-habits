@@ -119,5 +119,17 @@ document.getElementById("home").addEventListener("click", (e) => {
   deck.scrollTo({ top: 0, behavior: "smooth" });
 });
 
+// first-visit credit toast — shows once, then hides away for good
+if (!localStorage.getItem("creditShown")) {
+  const credit = document.getElementById("credit");
+  credit.hidden = false;
+  setTimeout(() => credit.classList.add("show"), 800);
+  setTimeout(() => {
+    credit.classList.remove("show");
+    setTimeout(() => (credit.hidden = true), 400);
+  }, 6800);
+  localStorage.setItem("creditShown", "1");
+}
+
 renderChips();
 render();

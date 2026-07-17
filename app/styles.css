@@ -314,6 +314,33 @@ header {
   font-size: 0.85rem;
 }
 
+/* ── first-visit credit toast ───────────────────────── */
+.credit {
+  position: fixed;
+  bottom: 1.2rem;
+  left: 50%;
+  translate: -50% 0;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--ink);
+  text-decoration: none;
+  background: var(--surface);
+  border: 1px solid color-mix(in srgb, var(--coral) 45%, transparent);
+  border-radius: 999px;
+  padding: 0.55rem 1rem;
+  opacity: 0;
+  transition:
+    opacity 0.4s ease,
+    translate 0.4s ease;
+}
+.credit b {
+  color: var(--coral);
+}
+.credit.show {
+  opacity: 1;
+  translate: -50% -4px;
+}
+
 :focus-visible {
   outline: 2px solid var(--coral);
   outline-offset: 2px;
@@ -322,6 +349,9 @@ header {
 @media (prefers-reduced-motion: reduce) {
   .cover .hint {
     animation: none;
+  }
+  .credit {
+    transition: none;
   }
   #deck {
     scroll-behavior: auto !important;
