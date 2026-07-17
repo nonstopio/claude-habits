@@ -44,6 +44,10 @@ claude
 2. Repo **Settings → Pages → Source: GitHub Actions**.
 3. Push to `main`. The [deploy workflow](.github/workflows/deploy.yml) does the rest.
 
+## Further reading
+
+- [andrej-karpathy-skills](https://github.com/multica-ai/andrej-karpathy-skills) — a community distillation of Andrej Karpathy's observations on LLM coding pitfalls into a single CLAUDE.md (note: community-made, not by Karpathy himself). Good ideas — and a live example of a Guardrails habit from the deck: read third-party skills before you adopt them; stars are popularity, not a security review.
+
 ## License
 
 MIT — see [LICENSE](LICENSE).

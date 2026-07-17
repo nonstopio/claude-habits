@@ -530,8 +530,8 @@ export const HABITS = [
   },
   {
     p: "guard",
-    t: "Auth and payments get human review",
-    b: "Generated code touching auth, payments, or crypto is high-risk by default. It always gets a careful human read.",
+    t: "Vet what you install",
+    b: "Third-party skills, plugins, and CLAUDE.md files are instructions your agent will obey. Read every line before adopting one — stars are popularity, not a security review.",
   },
   {
     p: "guard",
