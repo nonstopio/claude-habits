@@ -419,7 +419,7 @@ export const HABITS = [
   {
     p: "connect",
     t: "Read-only creds for data sources",
-    b: "The database connector gets a read-only user. Claude querying prod is useful; Claude writing to prod is a incident report.",
+    b: "The database connector gets a read-only user. Claude querying prod is useful; Claude writing to prod is an incident report.",
   },
   {
     p: "connect",
@@ -541,11 +541,11 @@ export const HABITS = [
   {
     p: "guard",
     t: "Verify what it claims",
-    b: "In Anthropic's study of 400,000 sessions, only one in three produced correct output. Verification isn't overhead — it's the job.",
+    b: "Anthropic's study of ~400,000 sessions found even expert users reached verified success — passing tests, committed work, or user sign-off — only about a third of the time. Verification isn't overhead; it's the job.",
   },
   {
     p: "guard",
     t: "Habits beat the model",
-    b: "Same model, same task: the dev with habits ships and the dev without one reworks. The model isn't the variable. You are.",
+    b: "Same model, same task: the dev with habits ships and the dev without them reworks. The model isn't the variable. You are.",
   },
 ];
